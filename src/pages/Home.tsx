@@ -1,7 +1,7 @@
-import { IonContent, IonItem, IonHeader, IonLabel,  IonPage, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar} from '@ionic/react';
+import { IonContent, IonItem, IonHeader, IonLabel, IonList, IonPage, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar} from '@ionic/react';
 import './Home.css';
 import { useEffect, useState } from 'react';
-import useApi, { SearchType } from '../hooks/useApi'
+import useApi, { SearchType, SearchResult } from '../hooks/useApi'
 
 const Home: React.FC = () => {
 
@@ -9,7 +9,7 @@ const Home: React.FC = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [type, setType] = useState<SearchType>(SearchType.all);
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<SearchResult[]>([]);
 
   useEffect(() => {
     if (searchTerm === '') {
@@ -45,6 +45,13 @@ const Home: React.FC = () => {
             <IonSelectOption value="episode">Episode</IonSelectOption>
           </IonSelect>
         </IonItem>
+        <IonList>
+          {results.map((item: any) => (
+            <IonItem>
+              <IonLabel>{item.Title}</IonLabel>
+            </IonItem>
+          ))}
+        </IonList>
       </IonContent>
     </IonPage>
   );
