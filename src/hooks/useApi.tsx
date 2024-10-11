@@ -27,7 +27,7 @@ export interface DetailsResult {
 
 export const useApi = () => {
     let url = 'https://www.omdbapi.com/';
-    let apiKey = '2be398c0';
+    let apiKey = 'a88690ee';
 
 const searchData = async (title: string, type: SearchType): Promise<SearchResult[]> => {
     const response = await fetch(
